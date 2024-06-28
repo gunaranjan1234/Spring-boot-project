@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Application</title>
+</head>
+<body>
+<!-- List of Books -->
+<table>
+    <!-- Table headers -->
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Author ID</th>
+        <th>Genre</th>
+        <th>Actions</th> <!-- Added column for actions -->
+    </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+    <tr th:each="student : ${students}">
+        <!-- Display book details -->
+        <td th:text="${student.id}">-</td>
+        <td>
+            <!-- Make book name clickable -->
+            <a th:href="@{/books/{id}(id=${student.id})}" class="book-link" th:text="${student.name}">-</a>
+        </td>
+        <td th:text="${student.address}">-</td>
+        <td th:text="${student.phoneNo}">-</td>
+        <!-- Delete and Edit buttons -->
+        <td>
+            <form th:action="@{/books/delete/{id}(id=${student.id})}" method="post">
+                <input type="hidden" name="_method" value="delete">
+                <button type="submit">Delete</button>
+            </form>
+            <a th:href="@{/books/edit/{id}(id=${student.id})}"><button>Edit</button></a> <!-- Edit button -->
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+<!--<div class="container">-->
+<!--    <h2>Book Details</h2>-->
+<!--    <div class="book-details">-->
+<!--        <table>-->
+<!--            <tr>-->
+<!--                <th>Name</th>-->
+<!--                <td th:text="${Student.name}">-</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th>ID</th>-->
+<!--                <td th:text="${Student.id}">-</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th>Address</th>-->
+<!--                <td th:text="${Student.address}">-</td>-->
+<!--            </tr>-->
+<!--            <tr>-->
+<!--                <th>PhoneNo</th>-->
+<!--                <td th:text="${Student.phoneNo}">-</td>-->
+<!--            </tr>-->
+<!--        </table>-->
+<!--    </div>-->
+<!--    <a class="back-link" th:href="@{/books}">Back to Book List</a>-->
+<!--</div>-->
+</body>
+</html>

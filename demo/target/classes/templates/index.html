@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>List of Books</title>
+</head>
+<body>
+
+<!-- Logout button -->
+<!--<form action="/logout" method="get">-->
+<!--    <button type="submit">Logout</button>-->
+<!--</form>-->
+
+<!-- New Book Form -->
+<!--<form action="#" th:action="@{/books}" th:object="${newBook}" method="post">-->
+<!--    <h2 style="text-align: center;">List of Books</h2>-->
+
+<!--    <label for="name">Name:</label>-->
+<!--    <input type="text" id="name" name="name" required/>-->
+
+<!--    <label for="authorId">Author ID:</label>-->
+<!--    <input type="text" id="authorId" name="authorId" required/>-->
+
+<!--    <label for="genre">Genre:</label>-->
+<!--    <input type="text" id="genre" name="genre" required/>-->
+
+<!--    <button type="submit">Add Book</button>-->
+<!--</form>-->
+
+<!-- List of Books -->
+<table>
+    <!-- Table headers -->
+    <thead>
+    <tr>
+        <th>Userid</th>
+        <th>email</th>
+        <th>password</th>
+    </tr>
+    </thead>
+    <!-- Table body -->
+    <tbody>
+    <tr th:each="User : ${users}">
+        <!-- Display book details -->
+        <td th:text="${User.Userid}">-</td>
+        <td>
+            <!-- Make book name clickable -->
+            <a th:href="@{/User/{Userid}(id=${User.Userid})}" class="book-link" th:text="${User.email}">-</a>
+        </td>
+        <td th:text="${User.password}">-</td>
+
+        <!-- Delete and Edit buttons -->
+<!--        <td>-->
+<!--            <form th:action="@{/books/delete/{id}(id=${book.id})}" method="post">-->
+<!--                <input type="hidden" name="_method" value="delete">-->
+<!--                <button type="submit">Delete</button>-->
+<!--            </form>-->
+<!--            <a th:href="@{/books/edit/{id}(id=${book.id})}"><button>Edit</button></a> &lt;!&ndash; Edit button &ndash;&gt;-->
+<!--        </td>-->
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
